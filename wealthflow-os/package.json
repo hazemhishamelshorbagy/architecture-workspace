@@ -5,6 +5,15 @@
   "scripts": {
     "prepare": "husky"
   },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "nx affected:lint --uncommitted",
+      "prettier --write"
+    ],
+    "**/*.{json,md,css,scss}": [
+      "prettier --write"
+    ]
+  },
   "private": true,
   "dependencies": {
     "next": "~16.1.6",
