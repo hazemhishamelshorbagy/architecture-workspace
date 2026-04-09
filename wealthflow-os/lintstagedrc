@@ -1,0 +1,10 @@
+{
+    "{apps,libs}/**/*.{ts,tsx,js,jsx}": [
+        "nx affected --target=lint --uncommitted --fix",
+        "nx affected --target=test --uncommitted",
+        "prettier --write"
+    ],
+    "*.{json,md,scss,css}": [
+        "prettier --write"
+    ]
+}

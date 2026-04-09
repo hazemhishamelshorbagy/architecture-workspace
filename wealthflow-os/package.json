@@ -2,7 +2,12 @@
   "name": "@wealthflow-os/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "prepare": "husky",
+    "lint:affected": "nx affected --target=lint",
+    "format:write": "nx format:write",
+    "format:check": "nx format:check"
+  },
   "private": true,
   "dependencies": {
     "next": "~16.1.6",
@@ -17,9 +22,12 @@
     "@swc/cli": "~0.8.0",
     "@swc/core": "~1.15.5",
     "@swc/helpers": "~0.5.18",
+    "@types/node": "20.19.9",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "autoprefixer": "10.4.13",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "nx": "22.6.4",
     "postcss": "8.4.38",
     "prettier": "~3.6.2",
@@ -28,6 +36,7 @@
     "typescript": "~5.9.2"
   },
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "shared/*"
   ]
 }
