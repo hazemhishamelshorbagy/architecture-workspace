@@ -80,6 +80,7 @@ export const themeTokens = {
   borderRadius: {
     none: '0',
     sm: '0.125rem',
+
     DEFAULT: '12px',      // الحواف الموحدة للنظام
     full: '9999px',
   },
