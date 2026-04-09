@@ -3,10 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "prepare": "husky",
-    "lint:affected": "nx affected --target=lint",
-    "format:write": "nx format:write",
-    "format:check": "nx format:check"
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
