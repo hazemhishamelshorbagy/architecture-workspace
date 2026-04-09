@@ -4,13 +4,7 @@
   "files": [],
   "references": [
     {
-      "path": "./libs/shared/ui-components"
-    },
-    {
-      "path": "./apps/web/dashboard"
-    },
-    {
-      "path": "./apps/web/shell"
+      "path": "./apps/web"
     }
   ]
 }
