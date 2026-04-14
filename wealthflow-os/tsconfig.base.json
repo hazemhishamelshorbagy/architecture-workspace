@@ -1,21 +1,22 @@
 {
   "compilerOptions": {
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "allowImportingTsExtensions": true,
     "composite": true,
     "declarationMap": true,
-    "emitDeclarationOnly": true,
     "importHelpers": true,
     "isolatedModules": true,
-    "lib": ["es2022"],
+    "lib": ["es2022", "dom", "dom.iterable"], // Added DOM for React components
     "module": "esnext",
-    "moduleResolution": "bundler",
-    "noEmitOnError": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "skipLibCheck": true,
-    "strict": true,
+    "moduleResolution": "bundler", // Changed to bundler for better Next.js compatibility
     "target": "es2022",
-    "customConditions": ["@wealthflow-os/source"]
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true, // Usually base config shouldn't emit anything
+    "baseUrl": ".",
+    "paths": {
+      "@wealthflow/design-system": ["libs/shared/design-system/src/index.ts"]
+    }
   }
 }

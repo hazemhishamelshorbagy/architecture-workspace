@@ -4,10 +4,10 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/web"
+      "path": "./apps/web/wealthflow-app"
     },
     {
-      "path": "./shared/design-system"
+      "path": "./libs/shared/design-system"
     }
   ]
 }
