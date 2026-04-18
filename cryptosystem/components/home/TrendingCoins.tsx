@@ -5,13 +5,21 @@ import clsx from "clsx";
 import { TrendingUpIcon, TrendingDownIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import TrendingCoinsFallback from "../fallback/TrendingCoinsFallback";
 
 const TrendingCoins = async () => {
-  const trendingCoins = await fetcher<{ coins: TrendingCoin[] }>(
-    "/search/trending",
-    undefined,
-    300,
-  );
+  let trendingCoins;
+  try {
+    trendingCoins = await fetcher<{ coins: TrendingCoin[] }>(
+      "/search/trending",
+      undefined,
+      300,
+    );
+  } catch (error) {
+    console.error("Error fetching coin details:", error);
+    return <TrendingCoinsFallback />;
+  }
+
   const columns: DataTableColumn<TrendingCoin>[] = [
     {
       header: "Name",
@@ -63,9 +71,9 @@ const TrendingCoins = async () => {
       <Datatable
         data={trendingCoins.coins.slice(0, 6) || []}
         columns={columns}
-              rowKey={(row) => row.item.id}
-              headerCellClassName="py-3!"
-                bodyCellClassName="py-2!"
+        rowKey={(row) => row.item.id}
+        headerCellClassName="py-3!"
+        bodyCellClassName="py-2!"
       />
     </div>
   );
