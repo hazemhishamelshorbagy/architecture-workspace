@@ -1,7 +1,26 @@
-export default function Home() {
+import { Suspense } from "react";
+import TrendingCoins from "@/components/home/TrendingCoins";
+import CoinOverview from "@/components/home/CoinOverview";
+import CoinOverviewFallback from "@/components/fallback/CoinOverviewFallback";
+import TrendingCoinsFallback from "@/components/fallback/TrendingCoinsFallback";
+
+const Page = async () => {
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start"></main>
+      <main className="main-container inner">
+        <section className="home-grid">
+          <Suspense fallback={<CoinOverviewFallback />}>
+            <CoinOverview />
+          </Suspense>
+          <Suspense fallback={<TrendingCoinsFallback />}>
+            <TrendingCoins />
+          </Suspense>
+        </section>
+        <section className="w-full mt-7 space-y-4">
+          <p>category</p>
+        </section>
+      </main>
     </div>
   );
-}
+};
+export default Page;

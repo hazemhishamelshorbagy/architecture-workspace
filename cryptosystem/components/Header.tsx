@@ -9,7 +9,7 @@ const Header = () => {
     <header className="flex items-center">
       <div className="main-container inner">
         <Link href="/">
-          <Image src="/logo.svg" alt="Logo" width={132} height={40} />
+          <Image src="/logo.svg" className="h-auto w-auto" loading="eager" alt="Logo" width={120} height={40} />
         </Link>
         <nav>
           <ul className="flex items-center gap-6">
