@@ -1,0 +1,74 @@
+import { fetcher } from "@/lib/coingeko.actions";
+import React from "react";
+import Datatable from "@/components/Datatable";
+import clsx from "clsx";
+import { TrendingUpIcon, TrendingDownIcon } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+
+const TrendingCoins = async () => {
+  const trendingCoins = await fetcher<{ coins: TrendingCoin[] }>(
+    "/search/trending",
+    undefined,
+    300,
+  );
+  const columns: DataTableColumn<TrendingCoin>[] = [
+    {
+      header: "Name",
+      cell: (coin) => {
+        const item = coin.item;
+        return (
+          <Link href={`/coins/${item.id}`} className="flex items-center gap-2">
+            <Image src={item.large} alt={item.name} width={36} height={36} />
+            <p>{item.name}</p>
+          </Link>
+        );
+      },
+    },
+    {
+      header: "24h Change",
+      cell: (coin) => {
+        const item = coin.item;
+        const isTrendingUp = item.data.price_change_percentage_24h.usd > 0;
+        return (
+          <p
+            className={clsx(
+              "price-change",
+              isTrendingUp ? "text-green-500" : "text-red-500",
+            )}
+          >
+            {isTrendingUp ? (
+              <TrendingUpIcon width={16} height={16} />
+            ) : (
+              <TrendingDownIcon width={16} height={16} />
+            )}
+            {item.data.price_change_percentage_24h.usd.toFixed(2)}%
+          </p>
+        );
+      },
+    },
+    {
+      header: "Price",
+      cell: (coin) => {
+        const item = coin.item;
+        return <p>${item.data.price.toLocaleString()}</p>;
+      },
+    },
+  ];
+
+  return (
+    <div id="trending-coins">
+      <h1 className="text-xl font-bold px-2.5 py-2.5">Trending coins</h1>
+
+      <Datatable
+        data={trendingCoins.coins.slice(0, 6) || []}
+        columns={columns}
+              rowKey={(row) => row.item.id}
+              headerCellClassName="py-3!"
+                bodyCellClassName="py-2!"
+      />
+    </div>
+  );
+};
+
+export default TrendingCoins;
