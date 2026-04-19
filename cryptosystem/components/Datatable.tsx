@@ -27,7 +27,7 @@ const Datatable = <T,>({
       <TableHeader className={headerClassName}>
         <TableRow className={clsx("hover:bg-transparent!",headerRowClassName)}>
          {columns.map((column, index) => (
-            <TableHead key={index} className={clsx("bg-dark-400 text-purple-100 py-4 first:pl-5 last:pr-5",headerCellClassName)}>
+            <TableHead key={index} className={clsx("bg-dark-400 text-purple-100 py-4 first:pl-5 last:pr-5",headerCellClassName, column.headClassName)}>
               {column.header}
             </TableHead>
           ))}
