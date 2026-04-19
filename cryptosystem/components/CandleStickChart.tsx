@@ -23,6 +23,7 @@ const CandleStickChart = ({
   coinId,
   height = 360,
   initialPeriod = "daily",
+
 }: CandlestickChartProps) => {
   const chartContainerRef = useRef<HTMLDivElement | null>(null);
  
