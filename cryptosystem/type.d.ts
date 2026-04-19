@@ -13,7 +13,9 @@ interface CandlestickChartProps {
   children?: React.ReactNode;
   mode?: 'historical' | 'live';
   initialPeriod?: Period;
- 
+  liveInterval?: '1s' | '1m';
+  setLiveInterval?: (interval: '1s' | '1m') => void;
+
 }
 
 interface ConverterProps {
@@ -275,8 +277,8 @@ interface DataTableProps<T> {
   headerRowClassName?: string;
   headerCellClassName?: string;
   bodyRowClassName?: string;
-    bodyCellClassName?: string;
-    headerClassName?: string;
+  bodyCellClassName?: string;
+  headerClassName?: string;
 }
 
 type ButtonSize = 'default' | 'sm' | 'lg' | 'icon' | 'icon-sm' | 'icon-lg';
