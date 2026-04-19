@@ -25,14 +25,14 @@ const CandleStickChart = ({
   initialPeriod = "daily",
 }: CandlestickChartProps) => {
   const chartContainerRef = useRef<HTMLDivElement | null>(null);
-  const [loading, setLoading] = useState(false);
+ 
   const [period, setPeriod] = useState<Period>(initialPeriod);
   const chartRef = useRef<IChartApi | null>(null);
   const seriesRef = useRef<ISeriesApi<"Candlestick"> | null>(null);
   const [ohlcData, setOhlcData] = useState<OHLCData[]>(data ?? []);
   const [isPending, startTransition] = useTransition();
   const fetchOhlcData = async (selectedPeriod: Period, coinId: string) => {
-    setLoading(true);
+   
     try {
       const config = PERIOD_CONFIG[selectedPeriod];
 
@@ -45,7 +45,7 @@ const CandleStickChart = ({
     } catch (error) {
       console.error("Error fetching coin details:", error);
     } finally {
-      setLoading(false);
+     
     }
   };
 
@@ -109,7 +109,7 @@ const CandleStickChart = ({
               onClick={() => {
                 handlePeriodChange(value);
               }}
-              disabled={loading}
+              disabled={isPending}
             >
               {label}
             </button>
