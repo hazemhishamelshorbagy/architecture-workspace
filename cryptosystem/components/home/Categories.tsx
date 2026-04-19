@@ -5,9 +5,18 @@ import clsx from "clsx";
 import { TrendingUpIcon, TrendingDownIcon } from "lucide-react";
 import { formatPrice } from "@/lib/utils";
 import Image from "next/image";
+import CategoriesFallback from "../fallback/CategoriesFallback";
 
 const Categories = async () => {
-  const categories = await fetcher<Category[]>("/coins/categories");
+  let categories
+  try {
+   categories= await fetcher<Category[]>("/coins/categories");
+  } catch (error) {
+     console.error("Error fetching coin details:", error);
+    return <CategoriesFallback/>
+  }
+  
+  
   const coloumns: DataTableColumn<Category>[] = [
     {
       header: "Category",
@@ -23,8 +32,8 @@ const Categories = async () => {
       cellClassName:"flex gap-1",
       cell: (category) =>
 
-        category.top_3_coins.map((coin) => (
-          <Image src={coin} alt={coin} key={coin} width={28} height={28} />
+        category.top_3_coins.map((coin,coinIndex) => (
+          <Image src={coin} alt={`${category.name} top coin ${coinIndex + 1}`} key={coin} width={28} height={28} />
         )),
     },
     {
