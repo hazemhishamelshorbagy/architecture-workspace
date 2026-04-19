@@ -11,7 +11,8 @@ if (!BaseUrl || !ApiKey) {
 export async function fetcher<T>(endpoint: string, params?: QueryParams, revalidate?: 60|number): Promise<T> {
     const url = queryString.stringifyUrl({
         url: `${BaseUrl}${endpoint}`,
-        query: params
+        query: params,
+        
     });
 
 
