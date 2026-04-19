@@ -37,7 +37,7 @@ const Datatable = <T,>({
         {data.map((row, rowIndex) => (
           <TableRow key={rowKey(row, rowIndex)} className={clsx("overflow-hidden rounded-lg border-b border-purble-100/5 hover:bg-dark-400/30 relative",bodyRowClassName)}>
             {columns.map((column, colIndex) => (
-              <TableCell key={colIndex} className={clsx("py-4 first:ps-5 last:pe-5",bodyCellClassName)}>
+              <TableCell key={colIndex} className={clsx("py-4 first:ps-5 last:pe-5",bodyCellClassName,column.cellClassName)}>
                 {column.cell(row, rowIndex)}
               </TableCell>
             ))}

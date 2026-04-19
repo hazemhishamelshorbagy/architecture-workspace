@@ -20,7 +20,7 @@ const Header = () => {
               <p className="text-gray-500">search</p>
             </li>
             <li>
-              <Link className={pathname === "/coins" ? "text-white" : "text-gray-500"} href="/coins">Tokens</Link>
+              <Link className={pathname === "/coins" ? "text-white" : "text-gray-500"} href="/coins">Coins</Link>
             </li>
           </ul>
         </nav>

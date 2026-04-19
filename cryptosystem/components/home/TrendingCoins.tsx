@@ -6,6 +6,7 @@ import { TrendingUpIcon, TrendingDownIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import TrendingCoinsFallback from "../fallback/TrendingCoinsFallback";
+import { formatPrice } from "@/lib/utils";
 
 const TrendingCoins = async () => {
   let trendingCoins;
@@ -59,7 +60,7 @@ const TrendingCoins = async () => {
       header: "Price",
       cell: (coin) => {
         const item = coin.item;
-        return <p>${item.data.price.toLocaleString()}</p>;
+        return <p>{formatPrice(item.data.price)}</p>;
       },
     },
   ];
