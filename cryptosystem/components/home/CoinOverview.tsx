@@ -4,7 +4,7 @@ import { formatPrice } from "@/lib/utils";
 import React from "react";
 import Image from "next/image";
 import CoinOverviewFallback from "../fallback/CoinOverviewFallback";
-import CandleStickChart from "../CandleStickChart";
+import CandleStickChart from "../shared/CandleStickChart";
 const CoinOverview = async () => {
   try {
     const [coin, coinOHLCDATA] = await Promise.all([

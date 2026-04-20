@@ -1,6 +1,6 @@
 import { fetcher } from "@/lib/coingeko.actions";
 import React from "react";
-import Datatable from "@/components/Datatable";
+import Datatable from "@/components/shared/Datatable";
 import clsx from "clsx";
 import { TrendingUpIcon, TrendingDownIcon } from "lucide-react";
 import Link from "next/link";

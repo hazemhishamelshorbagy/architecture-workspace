@@ -6,7 +6,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/shared/Table";
+} from "@/components/shared/ui/Table";
 import { clsx } from "clsx";
 
 import React from "react";
