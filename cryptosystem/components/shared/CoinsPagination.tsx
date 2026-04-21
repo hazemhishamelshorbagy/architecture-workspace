@@ -33,9 +33,9 @@ const CoinsPagination = ({ currentPage, totalPages, hasMorePages }: Pagination) 
           />
         </PaginationItem>
 
-        <div className="pagination-pages">
+       
           {pageNumbers.map((page, index) => (
-            <PaginationItem key={index}>
+            <PaginationItem className='pagination-pages' key={index}>
               {page === ELLIPSIS ? (
                 <span className="ellipsis">...</span>
               ) : (
@@ -50,8 +50,7 @@ const CoinsPagination = ({ currentPage, totalPages, hasMorePages }: Pagination) 
               )}
             </PaginationItem>
           ))}
-        </div>
-
+      
         <PaginationItem className="pagination-control next">
           <PaginationNext
             onClick={() => !isLastPage && handlePageChange(currentPage + 1)}

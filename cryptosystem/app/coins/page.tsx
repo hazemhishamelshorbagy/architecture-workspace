@@ -1,6 +1,6 @@
 import Datatable from "@/components/shared/Datatable";
 import TrendingCoinsFallback from "@/components/fallback/TrendingCoinsFallback";
-import Coinspagination from "@/components/shared/CoinsPagination";
+
 import { fetcher } from "@/lib/coingeko.actions";
 import { formatPrice, percentageFormatter } from "@/lib/utils";
 import clsx from "clsx";
@@ -8,6 +8,7 @@ import { TrendingUpIcon, TrendingDownIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { Suspense } from "react";
+import CoinsPagination from "@/components/shared/coinsPagination";
 
 const page = async ({ searchParams }: NextPageProps) => {
   const { page } = await searchParams;
@@ -35,7 +36,7 @@ const page = async ({ searchParams }: NextPageProps) => {
       cell: (coin) => (
         <>
           #{coin.market_cap_rank}
-          <Link href={`/coins/${coin.id}`} aria-label="View coin" />
+       
         </>
       ),
     },
@@ -93,15 +94,15 @@ const page = async ({ searchParams }: NextPageProps) => {
     <main id="coins-page">
       <div className="content">
         <h4>All Coins</h4>
-        <Suspense fallback={<TrendingCoinsFallback />}>
+      
           <Datatable
             tableClassName="coins-table"
             columns={columns}
             data={coinsData || []}
             rowKey={(coin) => coin.id}
           />
-        </Suspense>
-        <Coinspagination
+       
+        <CoinsPagination
           totalPages={estimatedTotalPages}
           hasMorePages={hasMorePage}
           currentPage={currentPage}
