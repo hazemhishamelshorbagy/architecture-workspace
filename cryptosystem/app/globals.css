@@ -836,7 +836,7 @@
 
   #coins-pagination {
     .pagination-content {
-      @apply flex w-full;
+      @apply flex gap-1 max-w-50;
     }
 
     .pagination-control {
