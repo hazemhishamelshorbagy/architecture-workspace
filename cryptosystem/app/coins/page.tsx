@@ -6,9 +6,8 @@ import { formatPrice, percentageFormatter } from "@/lib/utils";
 import clsx from "clsx";
 import { TrendingUpIcon, TrendingDownIcon } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
-import React, { Suspense } from "react";
-import CoinsPagination from "@/components/shared/coinsPagination";
+
+import CoinsPagination from "@/components/shared/CoinsPagination";
 
 const page = async ({ searchParams }: NextPageProps) => {
   const { page } = await searchParams;
