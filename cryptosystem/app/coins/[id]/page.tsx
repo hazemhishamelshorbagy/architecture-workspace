@@ -4,7 +4,7 @@ import { fetcher } from "@/lib/coingeko.actions";
 import { formatPercentage } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+
 
 const page = async ({ params }: NextPageProps) => {
   const { id } = await params;
@@ -18,8 +18,7 @@ const page = async ({ params }: NextPageProps) => {
       precision: "full",
     }),
   ]);
-  console.log("coinData", coinData);
-  console.log("coinOHLCData", coinOHLCData);
+  
   const coinDetails = [
     {
       label: "Market Cap",
@@ -80,7 +79,7 @@ const page = async ({ params }: NextPageProps) => {
 
                 {link ? (
                   <div className="link">
-                    <Link href={link} target="_blank">
+                    <Link rel="noopener noreferrer" href={link} target="_blank">
                       {linkText || label}
                     </Link>
                     <ArrowUpRight size={16} />
